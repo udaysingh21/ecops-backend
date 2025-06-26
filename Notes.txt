@@ -1,0 +1,7 @@
+SpringBoot is an open-source , Java based framework built on the top of Spring Framework , designed to simplify the development of 
+standalone , production-grade spring applications.
+
+Controller in SpringBoot are java based classes that are responsible for handling HTTP request and returning appropriate responese.
+
+If you add SECURITY dependency then by default it will secure all HTTP endpoints and there will be a /login page asking username and password.
+
