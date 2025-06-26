@@ -5,3 +5,15 @@ Controller in SpringBoot are java based classes that are responsible for handlin
 
 If you add SECURITY dependency then by default it will secure all HTTP endpoints and there will be a /login page asking username and password.
 
+Entity - It is a class that maps directly to a database table
+DTO (Data Transfer Objects) - It is an object which is used to transfer data b/w layers, keeps request/repsonse separate from entity logic.
+Repository - It is an interface that provides CRUD operations for entities using Data JPA.
+Controller - It is a RESTful endpoint handler that receives and returns data to/from external clients.
+Service - This is the layer where business logic resides, co-ordinating b/w controller and repositories.
+Password Encoding - A method (e.g. BCryptPasswordEncoder) which securely hash password before storing them
+
+Entity contains all the fields that directly represents database table, including internal or sensitive data whereas DTO contains the fields that
+are needed for specific request/response - tailored for what client/user sees at the end.
+
+@Autowired - In Spring , it is used for dependency injection - it tells Spring to automatically provide/inject an instance of the required dependency at
+runtime.
