@@ -1,6 +1,7 @@
 // Controller in Spring Boot are java classes which are responsible for handling incoming HTTP requests and returning appropriate responses.
 package com.ecops.ecops_backend.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("/hello")
+    @PreAuthorize("hasRole('CITIZEN')")
     public String sayHello() {
-        return "Hello, World!";
+        return "Hello, Citizen!";
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String sayAdmin() {
+        return "Hello, Admin!";
     }
 }

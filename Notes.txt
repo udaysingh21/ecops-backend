@@ -17,3 +17,33 @@ are needed for specific request/response - tailored for what client/user sees at
 
 @Autowired - In Spring , it is used for dependency injection - it tells Spring to automatically provide/inject an instance of the required dependency at
 runtime.
+
+@Builder - This annotation help in creating an object step by step , it is useful when an object has many parameters or some parameters are optional.
+
+# LOGIN And JWT AUTHENTICATION SYSTEM
+Spring Security - It is a framework that secures Java Application by managing authentication and authorization.
+AuthenticationManager - It is a core component that authenticates user credentials
+JWT Token - It is a compact token used for stateless , secure user session management.
+Security Config - Configuration class that sets access rules for protected and public API endpoints.
+Filter - Middleware that inspects and processes HTTP requests, often to validate JWTs.
+
+final - This keyword is used to indicate that a varibale , method or class cannot be modified or extended.
+
+{
+  "fullname": "Uday Sharma",
+  "email": "uday@example.com",
+  "password": "uday",
+  "citizenshipId": "INDI_12345687"
+}
+
+JwtUtil – Creates and validates tokens (no dependencies).
+JwtFilter – Uses `JwtUtil` and `UserDetailsServiceImpl` to validate tokens on every request.
+SecurityConfig – Adds `JwtFilter` to the Spring Security chain to enforce authentication.
+
+GrantedAuthority - It represents a permission or role assigned to a user, used by SpringSecurity to control access.
+@PreAuthorise / @Secured - Annotations to restrict methods access based on roles or expressions.
+CustomUserDetails - A user defined class implementing UserDetails to include extra info like roles in JWT Tokens.
+Authority Prefix (ROLE_): - A naming convention Spring uses where roles must be prefixed with ROLE_ to be recognized as roles.
+
+Method-level Security : In Spring it refers to restricting access to individuals methods in your applications based on user roles or permission.
+It allows you to protect specified Business logic by specifying who can invoke a method.
