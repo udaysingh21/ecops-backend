@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Area {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "area_id") // ✅ Map correctly
+    @Column(name = "area_id") 
     private Long id;
 
     private String name;
