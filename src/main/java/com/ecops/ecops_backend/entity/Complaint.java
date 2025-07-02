@@ -26,7 +26,7 @@ import lombok.Setter;
 public class Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "complaint_id") // ✅ Map correctly
+    @Column(name = "complaint_id") 
     private Long id;
 
     private String title;
