@@ -12,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.ecops.ecops_backend.filter.JwtFilter;
-import com.ecops.ecops_backend.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -21,8 +20,8 @@ public class SecurityConfig {
     @Autowired
     private JwtFilter jwtFilter;
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    // @Autowired
+    // private UserDetailsServiceImpl userDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

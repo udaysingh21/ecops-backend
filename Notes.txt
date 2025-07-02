@@ -36,6 +36,11 @@ final - This keyword is used to indicate that a varibale , method or class canno
   "citizenshipId": "INDI_12345687"
 }
 
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
 JwtUtil – Creates and validates tokens (no dependencies).
 JwtFilter – Uses `JwtUtil` and `UserDetailsServiceImpl` to validate tokens on every request.
 SecurityConfig – Adds `JwtFilter` to the Spring Security chain to enforce authentication.
@@ -47,3 +52,9 @@ Authority Prefix (ROLE_): - A naming convention Spring uses where roles must be 
 
 Method-level Security : In Spring it refers to restricting access to individuals methods in your applications based on user roles or permission.
 It allows you to protect specified Business logic by specifying who can invoke a method.
+
+SecurityContextHolder - This is used to get the currently authenticated user's details. It does this by accessing the SecurityContext which holds the
+authentication information of the user currently interacting with the system.
+
+@RequestParam - It is used to extract query parameters from the URL. 
+For example, if the URL is /api/admin/complaints?stationId=1, then stationId will be 1.
