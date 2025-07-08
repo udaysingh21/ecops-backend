@@ -27,7 +27,7 @@ import lombok.Setter;
 public class PoliceStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "police_station_id") // ✅ Map correctly
+    @Column(name = "police_station_id")
     private Long id;
 
     private String name;
