@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -43,4 +45,11 @@ public class Complaint {
     @ManyToOne // It means that many complaints can be associated with one police station.
     @JoinColumn(name = "police_station_id", nullable = false)
     private PoliceStation policeStation;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    public enum Status {
+        FILED,
+        IN_PROGRESS,
+        RESOLVED    }
 }

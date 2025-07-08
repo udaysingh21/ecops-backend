@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ecops.ecops_backend.dto.ComplaintRequestDto;
 import com.ecops.ecops_backend.dto.ComplaintResponseDto;
+import com.ecops.ecops_backend.dto.ComplaintStatusUpdateRequest;
 import com.ecops.ecops_backend.entity.Area;
 import com.ecops.ecops_backend.entity.Complaint;
 import com.ecops.ecops_backend.entity.User;
@@ -69,6 +70,35 @@ public class ComplaintService {
             .toList();
 
     }
+
+    public void updateComplaintStatus(ComplaintStatusUpdateRequest request) {
+    Complaint complaint = complaintRepository.findById(request.getComplaintId())
+        .orElseThrow(() -> new RuntimeException("Complaint not found"));
+
+    complaint.setStatus(request.getStatus());
+    complaintRepository.save(complaint);
+    }
+
+    public List<ComplaintResponseDto> getComplaintsForLoggedInUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+
+        List<Complaint> complaints = complaintRepository.findByCitizen(user);
+
+        return complaints.stream()
+            .map(c -> ComplaintResponseDto.builder()
+                .complaint_id(c.getId())
+                .title(c.getTitle())
+                .description(c.getDescription())
+                .area(c.getArea())
+                .status(c.getStatus() != null ? c.getStatus().name() : null)
+                .submittedAt(c.getSubmittedAt().toString())
+                .policeStation(c.getPoliceStation().getName())
+                .build())
+            .toList();
+    }
+
 
 
 }

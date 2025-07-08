@@ -11,13 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ComplaintResponseDto {
-    private Long complaint_id;
-    private String title;
-    private String description;
-    private String citizen;
+public class CriminalResponseDto {
+    private Long id;
+    private String name;
+    private int age;
+    private String crimeType;
     private String area;
     private String policeStation;
-    private String submittedAt;
-    private String status; // <-- Make sure this exists and is named 'status'
 }
