@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PoliceStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +42,8 @@ public class PoliceStation {
 
     @OneToMany(mappedBy = "policeStation", cascade = CascadeType.ALL) // CascadeType.ALL means that any operation (like persist, remove) on the police station will also be applied to the areas.
     private List<Area> areas;
+
+    @OneToMany(mappedBy = "policeStation", cascade = CascadeType.ALL) // One police station can have multiple departments, and the cascade type ensures that operations on the police station will also affect the departments.
+    private List<Department> departments;
 
 }

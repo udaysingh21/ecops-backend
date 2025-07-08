@@ -1,7 +1,7 @@
 package com.ecops.ecops_backend.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,21 +15,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "area")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Area {
+@Table(name = "departments")
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "area_id") // ✅ Map correctly
     private Long id;
 
     private String name;
 
-    @ManyToOne // It means that many areas can be associated with one police station.
-    @JoinColumn(name = "police_station_id", nullable = false)
-    private PoliceStation policeStation; 
+    @ManyToOne(fetch = FetchType.LAZY) // FetchType.LAZY is used to avoid loading the police station data until it's explicitly accessed which means it will not load the police station data immediately when the department is loaded. This can help with performance, especially if the police station data is large or not always needed.
+    @JoinColumn(name = "police_station_id", nullable = false) // This column will hold the foreign key reference to the police station.
+    private PoliceStation policeStation;
 }

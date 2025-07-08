@@ -58,3 +58,21 @@ authentication information of the user currently interacting with the system.
 
 @RequestParam - It is used to extract query parameters from the URL. 
 For example, if the URL is /api/admin/complaints?stationId=1, then stationId will be 1.
+
+@Transactional - This annotation ensures that this method is executed within a transaction context which means if any exception occurs 
+transaction will be rolled back.
+
+| Step   | Description                                                               |
+| ------ | ------------------------------------------------------------------------- |
+| **7**  | ✅ Assign Police Officers to Police Stations (Admin)                       |
+| **8**  | Setup & Register Departments (Law & Order, Cybercrime, etc.)              |
+| **9**  | Implement Complaint Lifecycle (FIR, Charge Sheet, Property Seizure, etc.) |
+| **10** | Complaint Tracker (Citizen View Status)                                   |
+| **11** | Criminal Details (Search/View by State/Area/Age)                          |
+| **12** | Communication Tools (Officer Chat, Polls, Forum)                          |
+| **13** | Magistrate Case Access + Warrant Approval                                 |
+| **14** | Secure Registration with Proof of Citizenship Upload                      |
+| **15** | Authorization & Access Control: Method-Level & Object-Level               |
+
+@ManyToOne(fetch = FetchType.LAZY) - FetchType.LAZY is used to avoid loading the data until it's explicitly accessed which means it will not load the police station data immediately when the department is loaded. This can help with performance, especially if the police station data is large or not always needed.
+
