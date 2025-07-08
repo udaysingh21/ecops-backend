@@ -13,11 +13,14 @@ import com.ecops.ecops_backend.dto.CriminalRequestDto;
 import com.ecops.ecops_backend.dto.CriminalResponseDto;
 import com.ecops.ecops_backend.service.CriminalService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/criminals")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+
 public class CriminalController {
 
     private final CriminalService criminalService;

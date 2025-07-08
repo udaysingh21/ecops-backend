@@ -26,11 +26,14 @@ import com.ecops.ecops_backend.service.ComplaintService;
 import com.ecops.ecops_backend.service.DepartmentService;
 import com.ecops.ecops_backend.service.PoliceStationService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+
 public class AdminController {
     private final ComplaintService complaintService;
     private final PoliceStationService policeStationService;

@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecops.ecops_backend.dto.ComplaintRequestDto;
 import com.ecops.ecops_backend.service.ComplaintService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/complaints")
 @RequiredArgsConstructor // This annotation generates a constructor with required arguments for all the final fields which is useful for dependency injection.
+@SecurityRequirement(name = "bearerAuth")
+
 public class ComplaintController {
 
     private final ComplaintService complaintService;

@@ -18,8 +18,12 @@ import com.ecops.ecops_backend.repository.UserRepository;
 import com.ecops.ecops_backend.service.AuthService;
 import com.ecops.ecops_backend.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/auth")
+@SecurityRequirement(name = "bearerAuth")
+
 public class AuthController {
     
     @Autowired

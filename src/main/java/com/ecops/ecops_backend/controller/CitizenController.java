@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ecops.ecops_backend.dto.ComplaintResponseDto;
 import com.ecops.ecops_backend.service.ComplaintService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/api/citizen")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+
 public class CitizenController {
     private final ComplaintService complaintService;
 
