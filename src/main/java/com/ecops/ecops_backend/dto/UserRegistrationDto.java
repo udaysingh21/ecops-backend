@@ -1,5 +1,7 @@
 package com.ecops.ecops_backend.dto;
 
+import com.ecops.ecops_backend.entity.User.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +18,5 @@ public class UserRegistrationDto {
     private String email;
     private String password;
     private String citizenshipId;
-
+    private Role role;
 }
